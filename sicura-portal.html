@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sicura Wealth — Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #080A08;
+      --surface: #0D110D;
+      --border: #1A231A;
+      --green: #2E5C28;
+      --green-dim: #1A3816;
+      --text: #F2F2F0;
+      --text-muted: #3A473A;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'IBM Plex Mono', monospace;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 24px;
+    }
+
+    .wordmark {
+      text-align: center;
+      margin-bottom: 64px;
+      user-select: none;
+    }
+
+    .page { width: 100%; max-width: 960px; display: none; flex-direction: column; align-items: center; }
+    .page.active { display: flex; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      width: 100%;
+    }
+
+    .card {
+      background: var(--surface);
+      padding: 36px 28px 28px;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.18s ease;
+      cursor: pointer;
+      border: none;
+      text-align: left;
+      color: inherit;
+      font-family: inherit;
+    }
+
+    .card::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: var(--green);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.28s ease;
+    }
+
+    .card:hover { background: #0F160F; }
+    .card:hover::after { transform: scaleX(1); }
+
+    .card-num {
+      font-size: 9px;
+      color: var(--green-dim);
+      letter-spacing: 0.25em;
+    }
+
+    .card-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 26px;
+      font-weight: 400;
+      color: var(--text);
+      line-height: 1.15;
+      margin-top: 4px;
+    }
+
+    .card-desc {
+      font-size: 9px;
+      color: var(--text-muted);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    .card-arrow {
+      margin-top: 24px;
+      font-size: 14px;
+      color: var(--green-dim);
+      transition: color 0.18s, transform 0.18s;
+      display: inline-block;
+    }
+
+    .card:hover .card-arrow {
+      color: var(--green);
+      transform: translateX(5px);
+    }
+
+    .section-label {
+      font-size: 9px;
+      letter-spacing: 0.35em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-bottom: 32px;
+      text-align: center;
+    }
+
+    .back-btn {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      cursor: pointer;
+      margin-bottom: 48px;
+      padding: 0;
+      transition: color 0.18s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .back-btn:hover { color: var(--text); }
+
+    .footer {
+      margin-top: 40px;
+      font-size: 9px;
+      color: var(--text-muted);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- MAIN PORTAL -->
+  <div class="page active" id="main">
+    <div class="wordmark">
+      <img src="logo.png" alt="Sicura Wealth Strategies" style="height: 64px; width: auto;">
+    </div>
+
+    <div class="grid">
+
+      <a class="card" href="https://wealth.emaplan.com/ema/SignIn" target="_blank" rel="noopener">
+        <div class="card-num">01</div>
+        <div class="card-label">Emoney</div>
+        <div class="card-desc">Financial Planning</div>
+        <div class="card-arrow">&#8594;</div>
+      </a>
+
+      <a class="card" href="https://calendly.com/matteo-sicura-wealth" target="_blank" rel="noopener">
+        <div class="card-num">02</div>
+        <div class="card-label">Calendly</div>
+        <div class="card-desc">Scheduling</div>
+        <div class="card-arrow">&#8594;</div>
+      </a>
+
+      <a class="card" href="https://www.ewealthmanager.com/ewmLogin/account/login" target="_blank" rel="noopener">
+        <div class="card-num">03</div>
+        <div class="card-label">Investment Accounts</div>
+        <div class="card-desc">Advisory Platform</div>
+        <div class="card-arrow">&#8594;</div>
+      </a>
+
+      <a class="card" href="https://points.sicurawealth.com" target="_blank" rel="noopener">
+        <div class="card-num">04</div>
+        <div class="card-label">Points Search</div>
+        <div class="card-desc">Award Flights</div>
+        <div class="card-arrow">&#8594;</div>
+      </a>
+
+      <button class="card" onclick="showPage('carriers')">
+        <div class="card-num">05</div>
+        <div class="card-label">Life Insurance</div>
+        <div class="card-desc">Carrier Portals</div>
+        <div class="card-arrow">&#8594;</div>
+      </button>
+
+    </div>
+
+    <div class="footer">Sicura Wealth Strategies &mdash; Chicago</div>
+  </div>
+
+  <!-- CARRIERS SUBMENU -->
+  <div class="page" id="carriers">
+    <div class="wordmark">
+      <img src="logo.png" alt="Sicura Wealth Strategies" style="height: 48px; width: auto;">
+    </div>
+
+    <button class="back-btn" onclick="showPage('main')">&#8592; &nbsp;Back to Portal</button>
+
+    <div class="section-label">Annuity and Life Insurance Login</div>
+
+    <div class="grid">
+
+      <a class="card" href="https://nlg-prod.auth0.com/login?state=hKFo2SA3OXhCUGZkN0hMRWVhTkVCSGpNcktzcERVbkUxVm9OQaFupWxvZ2luo3RpZNkgOWN4Zmx0cVpMVDJEbVc3eFVCUlRQaGc4VDJmM0loZlSjY2lk2SBQYUVUeEIyRUYwaG42eEFzeXY3ZzcxS2FyTlVKb1F2eg&client=PaETxB2EF0hn6xAsyv7g71KarNUJoQvz&protocol=oauth2&redirect_uri=https%3A%2F%2Fwww.nationallife.com%2Fcustomer%2Fauth%2Flogincallback&response_type=code%20id_token&scope=openid%20profile%20email&response_mode=form_post&nonce=639141318615749879.OTljNGM3ZTMtZDM3ZS00Mjk0LWI0NWEtNGRiMmU4OWYyZGU1MTUyODg1M2EtNjdjZi00MTJjLTkyMzUtZDg4MmUyNWMxZTBh&connection=NLGCustomerDB&audience=https%3A%2F%2Fnlgcpnprdaigw01.azure-api.net%2Fapi&x-client-SKU=ID_NET461&x-client-ver=5.7.0.0" target="_blank" rel="noopener">
+        <div class="card-num">01</div>
+        <div class="card-label">National Life</div>
+        <div class="card-desc">NLG Portal</div>
+        <div class="card-arrow">&#8594;</div>
+      </a>
+
+      <a class="card" href="https://www.nationwide.com/my-account-login" target="_blank" rel="noopener">
+        <div class="card-num">02</div>
+        <div class="card-label">Nationwide</div>
+        <div class="card-desc">Account Login</div>
+        <div class="card-arrow">&#8594;</div>
+      </a>
+
+      <a class="card" href="https://auth.lincolnfinancial.com/login?state=hKFo2SAzblgxdGdsVXQ2cTdEc2RLZk9IQVlyc0xEQXpOaDFncqFupWxvZ2luo3RpZNkgSy03UU54QkkyZFhQSjdPbVBKVXZmNzlnazh6d0N4aDajY2lk2SB0QnNlNmVoYmtWamI3VUZBR0xjbzUySElHYlBOZFRqWA&client=tBse6ehbkVjb7UFAGLco52HIGbPNdTjX&protocol=oauth2&response_type=code&scope=openid%20profile&redirect_uri=https%3A%2F%2Fwww.lincolnfinancial.com%2Fsecure%2Flogin%2Fcallback&nonce=gb2BxdsPE-rYh8FmDOsadbYats13WKHx7jkmBwRrQG8&code_challenge=v6SJMvmY-SNJc0bjgPx7MhP7ApiF-WlI10guYYIM69I&code_challenge_method=S256" target="_blank" rel="noopener">
+        <div class="card-num">03</div>
+        <div class="card-label">Lincoln Financial</div>
+        <div class="card-desc">Advisor Portal</div>
+        <div class="card-arrow">&#8594;</div>
+      </a>
+
+      <a class="card" href="https://www.mynyl.newyorklife.com/VSCRegWebApp/login?resume=/as/LnyrYHC7Zg/resume/as/authorization.ping&spentity=null" target="_blank" rel="noopener">
+        <div class="card-num">04</div>
+        <div class="card-label">NY Life</div>
+        <div class="card-desc">Agent Portal</div>
+        <div class="card-arrow">&#8594;</div>
+      </a>
+
+      <a class="card" href="https://life.myaccount.pacificlife.com/" target="_blank" rel="noopener">
+        <div class="card-num">05</div>
+        <div class="card-label">Pacific Life</div>
+        <div class="card-desc">Account Portal</div>
+        <div class="card-arrow">&#8594;</div>
+      </a>
+
+      <a class="card" href="https://equitable.com/login" target="_blank" rel="noopener">
+        <div class="card-num">06</div>
+        <div class="card-label">Equitable</div>
+        <div class="card-desc">Advisor Login</div>
+        <div class="card-arrow">&#8594;</div>
+      </a>
+
+      <a class="card" href="https://www.jackson.com/login/login.xhtml" target="_blank" rel="noopener">
+        <div class="card-num">07</div>
+        <div class="card-label">Jackson National</div>
+        <div class="card-desc">Advisor Portal</div>
+        <div class="card-arrow">&#8594;</div>
+      </a>
+
+    </div>
+
+    <div class="footer">Sicura Wealth Strategies &mdash; Chicago</div>
+  </div>
+
+  <script>
+    function showPage(id) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      window.scrollTo(0, 0);
+    }
+  </script>
+
+</body>
+</html>
